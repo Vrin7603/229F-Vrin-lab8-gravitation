@@ -27,6 +27,7 @@ public class Gravity : MonoBehaviour
         foreach ( var obj in gravityObjectList ) 
             {
                 //call Attract
+                if (obj != this)
                 Attract(obj);
             }
 
@@ -38,7 +39,7 @@ public class Gravity : MonoBehaviour
         float distance = direction.magnitude;
 
         float forceMagnitude = G * ( rb.mass * otherRb.mass/ MathF.Pow( distance,2));
-        Vector3 gravityForce = forceMagnitude * direction.normalized
+        Vector3 gravityForce = forceMagnitude * direction.normalized;
 
         otherRb.AddForce(gravityForce);
     }
